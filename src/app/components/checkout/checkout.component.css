@@ -1,0 +1,24 @@
+.checkout-left{
+    position: relative;
+    float: left;
+    width: 60%;
+    height: 400px;
+    /* padding: 0% 0% 0% 5%; */
+    /* background: #bfbfbf; */
+    margin-right: -200px;
+    margin-left: 5%;
+}
+
+.checkout-right{
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 485px;
+    /* padding: 0% 5% 0% 0%; */
+    margin-right: 5%;
+}
+
+.button-end{
+    position: relative;
+    padding: 2% 0% 0% 70%;
+}

@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th width="20%">Product Image</th>
+                    <th width="50%">Product Name</th>
+                    <th width="20%">Product UnitPrice</th>
+                    <th width="10%">Product Quantity</th>
+                </tr>
+                
+                <!-- <div *ngIf="orderItems.length > 0">
+                    hello
+                </div> -->
+
+                <tr *ngFor="let orderItem of orderItems" class="text-center">
+                    <td>
+                        <img src="{{ orderItem.imageUrl }}" width="150px" />
+                    </td>
+
+                    <td>
+                        <p>{{ orderItem.name }}</p>
+                    </td>
+
+                    <td>
+                        <p>{{ orderItem.unitPrice | currency: 'USD' }}</p>
+                    </td>
+                    
+                    <td>
+                        <p>{{ orderItem.quantity }}</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="font-weight: bold">
+                        <!-- <p>Total Quantity: {{ totalQuantity }}</p> -->
+                        <!-- <p>Shipping: FREE</p> -->
+                        <!-- <p>Total Price: {{ totalPrice | currency: 'USD' }}</p> -->
+                        <div class="text-end">
+                            <a routerLink="/order-history" class="btn btn-info">Go back to Order</a>
+                        </div>
+                    </td>
+                </tr>               
+            </table>
+        </div>
+    </div>
+</div>
+

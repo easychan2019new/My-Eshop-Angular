@@ -1,0 +1,183 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            
+            <form [formGroup]="addressFormGroup" (ngSubmit)="onSubmit()">
+                <!-- address form group -->
+                <div formGroupName="address" class="form-area">
+                    <h3>Address- Adding</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Contact Name</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="contactName" type="text">
+
+                                <div *ngIf="addressContactName.invalid && 
+                                    (addressContactName.dirty || addressContactName.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressContactName.errors.required">
+                                        Name is required
+                                    </div>
+
+                                    <div *ngIf="addressContactName.errors.minlength">
+                                        Name must be at least 2 characters long
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Contact Phone</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="contactPhone" type="text">
+
+                                <div *ngIf="addressContactPhone.invalid && 
+                                    (addressContactPhone.dirty || addressContactPhone.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressContactPhone.errors.required">
+                                        Phone is required
+                                    </div>
+
+                                    <div *ngIf="addressContactPhone.errors.minlength">
+                                        Phone must be at least 10 digits long
+                                    </div>
+
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Country</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country" (change)="refreshState()">
+                                    <option *ngFor="let country of countries" [ngValue]="country.name">
+                                        {{ country.name }}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="addressCountry.invalid && 
+                                    (addressCountry.dirty || addressCountry.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressCountry.errors.required">
+                                        Country is required
+                                    </div>
+
+                                </div>  
+                                                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Street</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="street" type="text">
+
+                                <div *ngIf="addressStreet.invalid && 
+                                    (addressStreet.dirty || addressStreet.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressStreet.errors.required">
+                                        Street is required
+                                    </div>
+
+                                    <div *ngIf="addressStreet.errors.minlength">
+                                        Street must be at least 2 characters long
+                                    </div>
+
+                                </div>                                   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>City</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="city" type="text">
+
+                                <div *ngIf="addressCity.invalid && 
+                                    (addressCity.dirty || addressCity.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressCity.errors.required">
+                                        City is required
+                                    </div>
+
+                                    <div *ngIf="addressCity.errors.minlength">
+                                        City must be at least 2 characters long
+                                    </div>
+
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="state">
+                                    <option *ngFor="let state of states" [ngValue]="state.name">
+                                        {{ state.name }}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="addressState.invalid && 
+                                    (addressState.dirty || addressState.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressState.errors.required">
+                                        State is required
+                                    </div>
+
+                                </div>  
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Zip Code</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="zipCode" type="text">
+
+                                <div *ngIf="addressZipCode.invalid && 
+                                    (addressZipCode.dirty || addressZipCode.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="addressZipCode.errors.required">
+                                        ZipCode is required
+                                    </div>
+
+                                    <div *ngIf="addressZipCode.errors.minlength">
+                                        ZipCode must be at least 2 characters long
+                                    </div>
+
+                                </div>                                  
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- submit button -->
+                    <div class="text-end" style="padding: 0% 10% 0% 0%;">
+                        <button type="submit" class="btn btn-success btn-lg">Save</button>
+                        
+                    </div>                    
+                </div>              
+
+                <div class="text-end">
+                    <a routerLink="/checkout">Back to Checkout Page</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+

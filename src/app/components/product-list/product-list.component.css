@@ -1,0 +1,8 @@
+.product-box h1{
+    font-size:18px;
+    border-bottom:1px solid #ccc;
+    padding-bottom:5px;
+    font-weight:600;
+    padding-top:12px;
+    margin-bottom:7px
+}

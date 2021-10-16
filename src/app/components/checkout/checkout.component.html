@@ -1,0 +1,106 @@
+<div class="main-content">
+    <div class="section-content ">
+        <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+            <!-- left part-->
+            <div class="checkout-left">
+                <div formGroupName="checkoutPayment" class="form-area">
+                    <h3>Payment</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Payment Method</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <div *ngIf="paymentList.length == 0">
+                                    <select formControlName="selectPayment">
+                                        <option disabled="disabled">None</option>
+                                    </select>
+                                </div>
+
+                                <div *ngIf="paymentList.length != 0">
+                                <select formControlName="selectPayment">
+                                    <option *ngFor="let payment of paymentList" [ngValue]="payment.id">
+                                        {{ payment.cardNumber}}
+                                    </option>
+                                </select>
+                                </div>
+                                
+                                <div *ngIf="checkoutPaymentSelectPayment.invalid && 
+                                (checkoutPaymentSelectPayment.dirty || checkoutPaymentSelectPayment.touched)" class="alert alert-danger mt-1">
+                                    Payment is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- add payment button -->
+                    <div class="button-end">
+                        <a routerLink="/payment" class="btn btn-warning">Add Payment</a>
+                    
+                    </div>
+                </div>
+
+                <!-- checkoutAddress form group -->
+                <div formGroupName="checkoutAddress" class="form-area">
+                    <h3>Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Shipping Address</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <div *ngIf="addressList.length == 0">
+                                    <select formControlName="selectAddress">
+                                        <option disabled="disabled">None</option>
+                                    </select>
+                                </div>
+
+                                <div *ngIf="addressList.length != 0">
+                                <select formControlName="selectAddress">
+                                    <option *ngFor="let address of addressList" [ngValue]="address.id">
+                                        {{ address.street }}
+                                    </option>
+                                </select>
+                                </div>
+                                
+                                <div *ngIf="checkoutAddressSelectAddress.invalid && 
+                                (checkoutAddressSelectAddress.dirty || checkoutAddressSelectAddress.touched)" class="alert alert-danger mt-1">
+                                    Address is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- add address button -->
+                    <div class="button-end">
+                        <a routerLink="/address" class="btn btn-warning">Add Address &nbsp;</a>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <!-- right part -->
+            <div class="checkout-right">
+                <div class="form-area">
+                    <h3>Information</h3>
+    
+                    <div class="row">
+                        <div class="text-start">
+                            <p>&nbsp;&nbsp;Total Quantity: &nbsp;{{ totalQuantity }}</p>
+                            <p>&nbsp;&nbsp;Shipping: &nbsp;FREE</p>
+                            <p style="font-weight: bold">&nbsp;&nbsp;Total Price: &nbsp;
+                                {{ totalPrice | currency: 'USD' }}</p>
+                            <!-- <br><br><br><br><br><br><br><br><br> -->
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- submit button -->
+                <div class="text-end" style="padding: 20% 20% 0% 0%;">
+                    <button type="submit" class="btn btn-success btn-lg">Purchase</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+

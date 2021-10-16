@@ -1,0 +1,32 @@
+<div class="form-header" >
+
+    <div *ngIf="isAuthenticated" class="login-status-user-info">
+        Welcome back! {{ userName }} 
+    </div>
+
+    <div *ngIf="isAuthenticated">    
+        <button (click)="logout()" class="security-btn-submit" placeholder="logout">
+            logout
+        </button>
+    </div>
+
+    <div *ngIf="!isAuthenticated">
+        <button (click)="login()" class="security-btn-submit" placeholder="login">
+            login
+        </button>
+    </div>
+
+    <div *ngIf="isAuthenticated">
+        &nbsp;&nbsp;
+        <button routerLink="/order-history" class="security-btn-submit" placeholder="Orders">
+            Orders
+        </button>
+    </div>
+
+    <!-- test real estate token-->
+    <!-- <div>
+        <button (click)="test()" class="security-btn-submit" placeholder="test">
+            test
+        </button>
+    </div> -->
+</div>

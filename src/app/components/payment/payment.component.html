@@ -1,0 +1,139 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            
+            <form [formGroup]="paymentFormGroup" (ngSubmit)="onSubmit()">
+                <!-- payment form group -->
+                <div formGroupName="payment" class="form-area">
+                    <h3>Payment- Credit Card</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Card Number</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="cardNumber" type="text">
+
+                                <div *ngIf="paymentCardNumber.invalid && 
+                                    (paymentCardNumber.dirty || paymentCardNumber.touched)" class="alert alert-danger mt-1">
+                                    
+                                    <div *ngIf="paymentCardNumber.errors.required">
+                                        Card Number is required
+                                    </div>
+
+                                    <div *ngIf="paymentCardNumber.errors.pattern">
+                                        Card number must be 16 digits long
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Name On Card</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="name" type="text">
+
+                                <div *ngIf="paymentName.invalid && 
+                                    (paymentName.dirty || paymentName.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="paymentName.errors.required">
+                                        Name is required
+                                    </div>
+
+                                    <div *ngIf="paymentName.errors.pattern">
+                                        Name must be at least 2 characters long
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Expiration Month</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="validUntilMonth">
+                                    <option *ngFor="let month of creditCardMonths" [ngValue]="month">
+                                        {{ month }}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="paymentValidUntilMonth.invalid && 
+                                    (paymentValidUntilMonth.dirty || paymentValidUntilMonth.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="paymentValidUntilMonth.errors.required">
+                                        Month is required
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Expiration Year</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="validUntilYear" (change)="handleMonthsAndYears()">
+                                    <option *ngFor="let year of creditCardYears" [ngValue]="year">
+                                        {{ year }}
+                                    </option>
+                                </select>
+
+                                <div *ngIf="paymentValidUntilYear.invalid && 
+                                    (paymentValidUntilYear.dirty || paymentValidUntilYear.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="paymentValidUntilYear.errors.required">
+                                        Year is required
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Security Code</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="cvv" type="text">
+
+                                <div *ngIf="paymentCvv.invalid && 
+                                    (paymentCvv.dirty || paymentCvv.touched)" class="alert alert-danger mt-1">
+                                
+                                    <div *ngIf="paymentCvv.errors.required">
+                                        Security Code is required
+                                    </div>
+
+                                    <div *ngIf="paymentCvv.errors.pattern">
+                                        Security code must be 3 digits long
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- submit button -->
+                    <div class="text-end" style="padding: 5% 10% 0% 0%;">
+                        <button type="submit" class="btn btn-success btn-lg">Save</button>
+                        
+                    </div>                    
+                </div>              
+
+                <div class="text-end">
+                    <a routerLink="/checkout">Back to Checkout Page</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

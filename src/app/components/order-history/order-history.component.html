@@ -1,0 +1,46 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <h3>Your Orders</h3>
+            
+            <div *ngIf="orderHistoryList.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="30%" class="text-center">Order Traching Number</th>
+                        <th width="10%" class="text-center">Total Price</th>
+                        <th width="10%" class="text-center">Total Quantity</th>
+                        <th width="20%" class="text-center">Status</th>
+                        <th width="20%" class="text-center">Date</th>
+                        <th width="10%" class="text-center">View Order Details</th>
+                    </tr>
+
+                    <tr *ngFor="let selectOrder of orderHistoryList">
+                        <td class="text-center">
+                            {{ selectOrder.id }}
+                        </td>
+                        <td class="text-center">
+                            {{ selectOrder.totalPrice | currency: 'USD' }}
+                        </td>
+                        <td class="text-center">
+                            {{ selectOrder.totalQuantity }}
+                        </td>
+                        <td class="text-center">
+                            {{ selectOrder.status }}
+                        </td>
+                        <td class="text-center">
+                            {{ selectOrder.dateCreated | date: 'medium' }}
+                        </td>
+                        <td class="text-center">
+                            <a routerLink="/order-details/{{ selectOrder.id }}">view</a>
+                        </td>
+                    </tr>
+                </table>           
+            </div>
+
+            <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" role="alert">
+                No orders found.
+            </div>
+        
+        </div>
+    </div>
+</div>
